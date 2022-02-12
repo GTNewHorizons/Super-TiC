@@ -19,7 +19,7 @@ public class SuperTic {
 
     static final String ModId = "SuperTic";
     static final String ModName = "SuperTic";
-    static final String Version = "1.2.1";
+    static final String Version = "GRADLETOKEN_VERSION";
 
     @Instance
     public static SuperTic Instace = new SuperTic();
@@ -48,7 +48,7 @@ public class SuperTic {
         Config.mainConfig(mainConfigFile);
         if (Loader.isModLoaded("AWWayofTime") && Config.BM)
             Compat.bloody();
-        if (Loader.isModLoaded("Thaumcraft") && Config.TC && false) //false? why that? this just disables the check...
+        if (Loader.isModLoaded("Thaumcraft") && Config.TC)
             Compat.thaumic();
     }
 }
