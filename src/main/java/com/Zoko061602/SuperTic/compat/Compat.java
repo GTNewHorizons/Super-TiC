@@ -26,9 +26,7 @@ public class Compat {
         new ResearchItem("TINKERSAUGUMENTATION", "ARTIFICE", al, 7, 6, 7, new ItemStack(TinkerTools.titleIcon, 1, 4099))
                 .setPages(new ResearchPage("By using your infusion matrix you were able to add an additional modifier to your TConstruct Tools. Sadly the matrix is only capable of doing this once per tool."),
                         new ResearchPage(Thaumcraft.infusion))
-                .setParents("RUNICAUGMENTATION")
-                .setSpecial()
-                .setHidden()
+                .setAutoUnlock();
                 .registerResearchItem();
     }
 
