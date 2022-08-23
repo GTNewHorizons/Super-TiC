@@ -2,3 +2,4 @@
 ritual.SuperTiC_Modifier.name=匠魂之咒
 tc.research_name.TINKERSAUGUMENTATION=奇术增强
 tc.research_text.TINKERSAUGUMENTATION=您是否正在尝试神奇地获得更多的法术位？因为这就是你如何神奇地获得更多法术位的方法。
+STiC=通过使用您的矩阵，您可以为您的 Tinker's Construct 工具添加额外的修饰符。可悲的是，每个工具只能执行一次矩阵。
