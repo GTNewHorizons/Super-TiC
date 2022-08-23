@@ -24,7 +24,7 @@ public class Compat {
         Thaumcraft.registerRecipes();
         AspectList al = new AspectList().add(Aspect.TOOL, 20).add(Aspect.MAGIC, 20);
         new ResearchItem("TINKERSAUGUMENTATION", "ARTIFICE", al, 7, 6, 7, new ItemStack(TinkerTools.titleIcon, 1, 4099))
-                .setPages(new ResearchPage("By using your infusion matrix you were able to add an additional modifier to your TConstruct Tools. Sadly the matrix is only capable of doing this once per tool."),
+                .setPages(new ResearchPage("STiC"),
                         new ResearchPage(Thaumcraft.infusion))
                 .setAutoUnlock()
                 .registerResearchItem();
