@@ -23,7 +23,7 @@ public class Compat {
     public static void thaumic() {
         Thaumcraft.registerRecipes();
         AspectList al = new AspectList().add(Aspect.TOOL, 20).add(Aspect.MAGIC, 20);
-        new ResearchItem("TINKERSAUGUMENTATION", "ARTIFICE", al, 7, 6, 7, new ItemStack(TinkerTools.titleIcon, 1, 4099))
+        new ResearchItem("TINKERSAUGMENTATION", "ARTIFICE", al, 7, 6, 7, new ItemStack(TinkerTools.titleIcon, 1, 4099))
                 .setPages(new ResearchPage("STiC"),
                         new ResearchPage(Thaumcraft.infusion))
                 .setAutoUnlock()
