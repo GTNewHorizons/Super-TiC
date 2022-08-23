@@ -1,2 +1,6 @@
 #Rituals
 ritual.SuperTiC_Modifier.name=Spell of the diligent Tinkerer
+
+#Thaumcraft Compat Stuff
+tc.research_name.TINKERSAUGUMENTATION=Thaumic Augmentation
+tc.research_text.TINKERSAUGUMENTATION=Are you trying to magically obtain more spell slots? Because that's how you magically obtain more spell slots.
