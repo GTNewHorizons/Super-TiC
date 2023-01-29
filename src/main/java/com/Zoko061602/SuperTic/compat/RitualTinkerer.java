@@ -1,9 +1,8 @@
 package com.Zoko061602.SuperTic.compat;
 
-import WayofTime.alchemicalWizardry.api.rituals.IMasterRitualStone;
-import WayofTime.alchemicalWizardry.api.rituals.RitualComponent;
-import WayofTime.alchemicalWizardry.api.rituals.RitualEffect;
-import WayofTime.alchemicalWizardry.common.spell.complex.effect.SpellHelper;
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,12 +11,15 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
-import tconstruct.library.tools.ToolCore;
 
-import java.util.ArrayList;
-import java.util.List;
+import tconstruct.library.tools.ToolCore;
+import WayofTime.alchemicalWizardry.api.rituals.IMasterRitualStone;
+import WayofTime.alchemicalWizardry.api.rituals.RitualComponent;
+import WayofTime.alchemicalWizardry.api.rituals.RitualEffect;
+import WayofTime.alchemicalWizardry.common.spell.complex.effect.SpellHelper;
 
 public class RitualTinkerer extends RitualEffect {
+
     ItemStack stack = null;
     EntityItem item = null;
     NBTTagCompound nbt = new NBTTagCompound();
@@ -36,7 +38,9 @@ public class RitualTinkerer extends RitualEffect {
 
         if (ritualStone.getVar1() == 0) {
             @SuppressWarnings("unchecked")
-            List<EntityItem> list = world.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(x, y + 1.0D, z, x + 1, y + 2, z + 1));
+            List<EntityItem> list = world.getEntitiesWithinAABB(
+                    EntityItem.class,
+                    AxisAlignedBB.getBoundingBox(x, y + 1.0D, z, x + 1, y + 2, z + 1));
 
             for (int i = 0; !(i == list.size()); i++) {
                 item = list.get(i);
@@ -52,16 +56,28 @@ public class RitualTinkerer extends RitualEffect {
                             break;
                         } else {
                             @SuppressWarnings("unchecked")
-                            List<EntityPlayer> listp = world.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(x - 6, y - 6, z - 6, x + 6, y + 6, z + 6));
-                            for (int j = 0; !(listp.size() == j); j++)
-                                listp.get(j).addChatMessage(new ChatComponentText("This tool seems to resist the energy"));
+                            List<EntityPlayer> listp = world.getEntitiesWithinAABB(
+                                    EntityPlayer.class,
+                                    AxisAlignedBB.getBoundingBox(x - 6, y - 6, z - 6, x + 6, y + 6, z + 6));
+                            for (int j = 0; !(listp.size() == j); j++) listp.get(j)
+                                    .addChatMessage(new ChatComponentText("This tool seems to resist the energy"));
                             ritualStone.setActive(false);
                             return;
                         }
                     }
 
                     if (world.rand.nextInt(10) == 0) {
-                        SpellHelper.sendIndexedParticleToAllAround(world, x, y, z, 20, world.provider.dimensionId, 1, x, y, z);
+                        SpellHelper.sendIndexedParticleToAllAround(
+                                world,
+                                x,
+                                y,
+                                z,
+                                20,
+                                world.provider.dimensionId,
+                                1,
+                                x,
+                                y,
+                                z);
                     }
                 }
             }

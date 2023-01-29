@@ -1,20 +1,21 @@
 package com.Zoko061602.SuperTic;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.tools.ToolCore;
 import tconstruct.library.tools.ToolMaterial;
 import tconstruct.library.util.IToolPart;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT) //this class doesnt need to run on the Server, or be referenced by it
+@SideOnly(Side.CLIENT) // this class doesnt need to run on the Server, or be referenced by it
 class TooltipEventHandler {
 
     private static TooltipEventHandler INSTANCE = new TooltipEventHandler();
@@ -28,7 +29,7 @@ class TooltipEventHandler {
         switch (a) {
             case 0:
                 r = "";
-				break;
+                break;
             case 1:
                 r = " I";
                 break;
@@ -76,11 +77,16 @@ class TooltipEventHandler {
         if (e.itemStack.getItem() instanceof IToolPart) {
             IToolPart item = (IToolPart) e.itemStack.getItem();
             int id = Config.id_eff.get(item.getMaterialID(e.itemStack));
-            if (id > 0)
-                e.toolTip.add(EnumChatFormatting.DARK_AQUA + StatCollector.translateToLocal(new PotionEffect(id, 1).getEffectName()) + getLatin(Config.id_amp.get(id)));
+            if (id > 0) e.toolTip.add(
+                    EnumChatFormatting.DARK_AQUA
+                            + StatCollector.translateToLocal(new PotionEffect(id, 1).getEffectName())
+                            + getLatin(Config.id_amp.get(id)));
             if (id < 0) {
                 id *= -1;
-                e.toolTip.add(EnumChatFormatting.AQUA + StatCollector.translateToLocal(new PotionEffect(id, 1).getEffectName()) + getLatin(Config.id_amp.get(id)));
+                e.toolTip.add(
+                        EnumChatFormatting.AQUA
+                                + StatCollector.translateToLocal(new PotionEffect(id, 1).getEffectName())
+                                + getLatin(Config.id_amp.get(id)));
             }
         }
     }
@@ -102,24 +108,32 @@ class TooltipEventHandler {
 
                 try {
                     p1 = tags.getCompoundTag("InfiTool").getInteger("Head");
-                    if (!(Config.id_eff.get(p1) == 0))
-                        head = new PotionEffect(Config.id_eff.get(tags.getCompoundTag("InfiTool").getInteger("Head")), 1, Config.id_amp.get(tags.getCompoundTag("InfiTool").getInteger("Head")));
+                    if (!(Config.id_eff.get(p1) == 0)) head = new PotionEffect(
+                            Config.id_eff.get(tags.getCompoundTag("InfiTool").getInteger("Head")),
+                            1,
+                            Config.id_amp.get(tags.getCompoundTag("InfiTool").getInteger("Head")));
 
                     p2 = tags.getCompoundTag("InfiTool").getInteger("Handle");
-                    if (!(Config.id_eff.get(p2) == 0))
-                        handle = new PotionEffect(Config.id_eff.get(tags.getCompoundTag("InfiTool").getInteger("Handle")), 1, Config.id_amp.get(tags.getCompoundTag("InfiTool").getInteger("Handle")));
+                    if (!(Config.id_eff.get(p2) == 0)) handle = new PotionEffect(
+                            Config.id_eff.get(tags.getCompoundTag("InfiTool").getInteger("Handle")),
+                            1,
+                            Config.id_amp.get(tags.getCompoundTag("InfiTool").getInteger("Handle")));
 
                     if (core.getPartAmount() >= 3) {
                         p3 = tags.getCompoundTag("InfiTool").getInteger("Accessory");
-                        if (!(Config.id_eff.get(p3) == 0))
-                            binding = new PotionEffect(Config.id_eff.get(tags.getCompoundTag("InfiTool").getInteger("Accessory")), 1, Config.id_amp.get(tags.getCompoundTag("InfiTool").getInteger("Accessory")));
+                        if (!(Config.id_eff.get(p3) == 0)) binding = new PotionEffect(
+                                Config.id_eff.get(tags.getCompoundTag("InfiTool").getInteger("Accessory")),
+                                1,
+                                Config.id_amp.get(tags.getCompoundTag("InfiTool").getInteger("Accessory")));
                     }
                     if (core.getPartAmount() == 4) {
                         p4 = tags.getCompoundTag("InfiTool").getInteger("Extra");
-                        if (!(Config.id_eff.get(p4) == 0))
-                            extra = new PotionEffect(Config.id_eff.get(tags.getCompoundTag("InfiTool").getInteger("Extra")), 1, Config.id_amp.get(tags.getCompoundTag("InfiTool").getInteger("Extra")));
+                        if (!(Config.id_eff.get(p4) == 0)) extra = new PotionEffect(
+                                Config.id_eff.get(tags.getCompoundTag("InfiTool").getInteger("Extra")),
+                                1,
+                                Config.id_amp.get(tags.getCompoundTag("InfiTool").getInteger("Extra")));
                     }
-                    //Head
+                    // Head
                     if (!(head.getPotionID() == 0)) {
                         if (head.getPotionID() < 0) {
                             int c = head.getAmplifier();
@@ -129,7 +143,12 @@ class TooltipEventHandler {
                                 c = binding.getAmplifier();
                             if (extra.getPotionID() == head.getPotionID() && c < extra.getAmplifier())
                                 c = extra.getAmplifier();
-                            e.toolTip.add(1, EnumChatFormatting.AQUA + StatCollector.translateToLocal(new PotionEffect(head.getPotionID() * (-1), 1).getEffectName()) + getLatin(c));
+                            e.toolTip.add(
+                                    1,
+                                    EnumChatFormatting.AQUA
+                                            + StatCollector.translateToLocal(
+                                                    new PotionEffect(head.getPotionID() * (-1), 1).getEffectName())
+                                            + getLatin(c));
                         } else {
                             int c = head.getAmplifier();
                             if (handle.getPotionID() == head.getPotionID() && c < handle.getAmplifier())
@@ -138,10 +157,15 @@ class TooltipEventHandler {
                                 c = binding.getAmplifier();
                             if (extra.getPotionID() == head.getPotionID() && c < extra.getAmplifier())
                                 c = extra.getAmplifier();
-                            e.toolTip.add(1, EnumChatFormatting.DARK_AQUA + StatCollector.translateToLocal(new PotionEffect(head.getPotionID(), 1).getEffectName()) + getLatin(c));
+                            e.toolTip.add(
+                                    1,
+                                    EnumChatFormatting.DARK_AQUA
+                                            + StatCollector.translateToLocal(
+                                                    new PotionEffect(head.getPotionID(), 1).getEffectName())
+                                            + getLatin(c));
                         }
                     }
-                    //Handle
+                    // Handle
                     if (!(handle.getPotionID() == 0) && !(handle.getPotionID() == head.getPotionID())) {
                         if (handle.getPotionID() < 0) {
                             int c = handle.getAmplifier();
@@ -149,40 +173,69 @@ class TooltipEventHandler {
                                 c = binding.getAmplifier();
                             if (extra.getPotionID() == handle.getPotionID() && c < extra.getAmplifier())
                                 c = extra.getAmplifier();
-                            e.toolTip.add(1, EnumChatFormatting.AQUA + StatCollector.translateToLocal(new PotionEffect(handle.getPotionID() * (-1), 1).getEffectName()) + getLatin(c));
+                            e.toolTip.add(
+                                    1,
+                                    EnumChatFormatting.AQUA
+                                            + StatCollector.translateToLocal(
+                                                    new PotionEffect(handle.getPotionID() * (-1), 1).getEffectName())
+                                            + getLatin(c));
                         } else {
                             int c = handle.getAmplifier();
                             if (binding.getPotionID() == handle.getPotionID() && c < binding.getAmplifier())
                                 c = binding.getAmplifier();
                             if (extra.getPotionID() == handle.getPotionID() && c < extra.getAmplifier())
                                 c = extra.getAmplifier();
-                            e.toolTip.add(1, EnumChatFormatting.DARK_AQUA + StatCollector.translateToLocal(new PotionEffect(handle.getPotionID(), 1).getEffectName()) + getLatin(c));
+                            e.toolTip.add(
+                                    1,
+                                    EnumChatFormatting.DARK_AQUA
+                                            + StatCollector.translateToLocal(
+                                                    new PotionEffect(handle.getPotionID(), 1).getEffectName())
+                                            + getLatin(c));
                         }
                     }
-                    //Binding
+                    // Binding
                     if (core.getPartAmount() >= 3)
-                        if (!(binding.getPotionID() == 0) && !(binding.getPotionID() == head.getPotionID()) && !(binding.getPotionID() == handle.getPotionID())) {
-                            if (binding.getPotionID() < 0) {
-                                int c = binding.getAmplifier();
-                                if (extra.getPotionID() == binding.getPotionID() && c < extra.getAmplifier())
-                                    c = extra.getAmplifier();
-                                e.toolTip.add(1, EnumChatFormatting.AQUA + StatCollector.translateToLocal(new PotionEffect(binding.getPotionID() * (-1), 1).getEffectName()) + getLatin(c));
-                            } else {
-                                int c = binding.getAmplifier();
-                                if (extra.getPotionID() == binding.getPotionID() && c < extra.getAmplifier())
-                                    c = extra.getAmplifier();
-                                e.toolTip.add(1, EnumChatFormatting.DARK_AQUA + StatCollector.translateToLocal(new PotionEffect(binding.getPotionID(), 1).getEffectName()) + getLatin(c));
-                            }
-                        }
-                    //Extra
+                        if (!(binding.getPotionID() == 0) && !(binding.getPotionID() == head.getPotionID())
+                                && !(binding.getPotionID() == handle.getPotionID())) {
+                                    if (binding.getPotionID() < 0) {
+                                        int c = binding.getAmplifier();
+                                        if (extra.getPotionID() == binding.getPotionID() && c < extra.getAmplifier())
+                                            c = extra.getAmplifier();
+                                        e.toolTip.add(
+                                                1,
+                                                EnumChatFormatting.AQUA + StatCollector.translateToLocal(
+                                                        new PotionEffect(binding.getPotionID() * (-1), 1)
+                                                                .getEffectName())
+                                                        + getLatin(c));
+                                    } else {
+                                        int c = binding.getAmplifier();
+                                        if (extra.getPotionID() == binding.getPotionID() && c < extra.getAmplifier())
+                                            c = extra.getAmplifier();
+                                        e.toolTip.add(
+                                                1,
+                                                EnumChatFormatting.DARK_AQUA + StatCollector.translateToLocal(
+                                                        new PotionEffect(binding.getPotionID(), 1).getEffectName())
+                                                        + getLatin(c));
+                                    }
+                                }
+                    // Extra
                     if (core.getPartAmount() == 4)
-                        if (!(extra.getPotionID() == 0) && !(extra.getPotionID() == head.getPotionID()) && !(extra.getPotionID() == handle.getPotionID()) && !(extra.getPotionID() == binding.getPotionID())) {
-                            if (extra.getPotionID() < 0)
-                                e.toolTip.add(1, EnumChatFormatting.AQUA + StatCollector.translateToLocal(new PotionEffect(extra.getPotionID() * (-1), 1).getEffectName()) + getLatin(extra.getAmplifier()));
-                            else
-                                e.toolTip.add(1, EnumChatFormatting.DARK_AQUA + StatCollector.translateToLocal(new PotionEffect(extra.getPotionID(), 1).getEffectName()) + getLatin(extra.getAmplifier()));
+                        if (!(extra.getPotionID() == 0) && !(extra.getPotionID() == head.getPotionID())
+                                && !(extra.getPotionID() == handle.getPotionID())
+                                && !(extra.getPotionID() == binding.getPotionID())) {
+                                    if (extra.getPotionID() < 0) e.toolTip.add(
+                                            1,
+                                            EnumChatFormatting.AQUA + StatCollector.translateToLocal(
+                                                    new PotionEffect(extra.getPotionID() * (-1), 1).getEffectName())
+                                                    + getLatin(extra.getAmplifier()));
+                                    else e.toolTip.add(
+                                            1,
+                                            EnumChatFormatting.DARK_AQUA
+                                                    + StatCollector.translateToLocal(
+                                                            new PotionEffect(extra.getPotionID(), 1).getEffectName())
+                                                    + getLatin(extra.getAmplifier()));
 
-                        }
+                                }
 
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -193,19 +246,17 @@ class TooltipEventHandler {
 
     private void addGregTooltips(ItemTooltipEvent e) {
         Item item = e.itemStack.getItem();
-		if (item instanceof IToolPart) {
-           GameRegistry.UniqueIdentifier ui = GameRegistry.findUniqueIdentifierFor(item);
+        if (item instanceof IToolPart) {
+            GameRegistry.UniqueIdentifier ui = GameRegistry.findUniqueIdentifierFor(item);
             if (ui != null && ui.modId.equals("TGregworks")) {
                 ToolMaterial mat = TConstructRegistry.toolMaterials.get(((IToolPart) item).getMaterialID(e.itemStack));
                 if (mat != null) {
-                    if (mat.stonebound > 0)
-                        e.toolTip.add("Stonebound: x" + mat.stonebound);
-                    if (mat.stonebound < 0)
-                        e.toolTip.add("Jagged: x" + mat.stonebound * -1);
+                    if (mat.stonebound > 0) e.toolTip.add("Stonebound: x" + mat.stonebound);
+                    if (mat.stonebound < 0) e.toolTip.add("Jagged: x" + mat.stonebound * -1);
 
-//                  This is already added by TGregworks...
-//                    if (mat.reinforced != 0)
-//                        e.toolTip.add("Reinforced" + getLatin(mat.reinforced));
+                    // This is already added by TGregworks...
+                    // if (mat.reinforced != 0)
+                    // e.toolTip.add("Reinforced" + getLatin(mat.reinforced));
                 }
             }
         }

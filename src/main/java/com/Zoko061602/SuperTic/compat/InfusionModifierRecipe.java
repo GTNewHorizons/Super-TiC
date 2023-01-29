@@ -1,33 +1,40 @@
 package com.Zoko061602.SuperTic.compat;
 
-import com.Zoko061602.SuperTic.Config;
+import java.util.ArrayList;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+
 import tconstruct.library.tools.ToolCore;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.crafting.InfusionRecipe;
 
-import java.util.ArrayList;
+import com.Zoko061602.SuperTic.Config;
 
 public class InfusionModifierRecipe extends InfusionRecipe {
 
     InfusionModifierRecipe(ItemStack input) {
-        super("TINKERSAUGUMENTATION", getOutput(input), Config.TC_lvl * 2, Thaumcraft.getListfromLevel(Config.TC_lvl), input, Thaumcraft.getInputfromLevel(Config.TC_lvl));
+        super(
+                "TINKERSAUGUMENTATION",
+                getOutput(input),
+                Config.TC_lvl * 2,
+                Thaumcraft.getListfromLevel(Config.TC_lvl),
+                input,
+                Thaumcraft.getInputfromLevel(Config.TC_lvl));
     }
 
     private static Object getOutput(ItemStack input) {
         if (input == null) return null;
         if (input.getItem() == null) return null;
-        if (input.getItem() instanceof ToolCore)
-            if (input.getTagCompound() != null) {
-                NBTTagCompound nbt = input.getTagCompound();
-                nbt.setBoolean("STicTC", true);
-                int mod = nbt.getCompoundTag("InfiTool").getInteger("Modifiers") + 1;
-                nbt.getCompoundTag("InfiTool").setInteger("Modifiers", mod);
-                input.setTagCompound(nbt);
-            }
+        if (input.getItem() instanceof ToolCore) if (input.getTagCompound() != null) {
+            NBTTagCompound nbt = input.getTagCompound();
+            nbt.setBoolean("STicTC", true);
+            int mod = nbt.getCompoundTag("InfiTool").getInteger("Modifiers") + 1;
+            nbt.getCompoundTag("InfiTool").setInteger("Modifiers", mod);
+            input.setTagCompound(nbt);
+        }
         return input;
     }
 
@@ -46,8 +53,7 @@ public class InfusionModifierRecipe extends InfusionRecipe {
             boolean b = false;
             for (int a = 0; a < ii.size(); a++) {
                 i2 = ii.get(a).copy();
-                if (comp.getItemDamage() == 32767)
-                    i2.setItemDamage(32767);
+                if (comp.getItemDamage() == 32767) i2.setItemDamage(32767);
                 if (areItemStacksEqual(i2, comp, true)) {
                     ii.remove(a);
                     b = true;
@@ -61,16 +67,14 @@ public class InfusionModifierRecipe extends InfusionRecipe {
 
     @Override
     public Object getRecipeOutput(ItemStack input) {
-        if (input == null || input.getItem() == null)
-            return null;
-        if (input.getItem() instanceof ToolCore)
-            if (input.getTagCompound() != null) {
-                NBTTagCompound nbt = input.getTagCompound();
-                nbt.setBoolean("STicTC", true);
-                int mod = nbt.getCompoundTag("InfiTool").getInteger("Modifiers") + 1;
-                nbt.getCompoundTag("InfiTool").setInteger("Modifiers", mod);
-                input.setTagCompound(nbt);
-            }
+        if (input == null || input.getItem() == null) return null;
+        if (input.getItem() instanceof ToolCore) if (input.getTagCompound() != null) {
+            NBTTagCompound nbt = input.getTagCompound();
+            nbt.setBoolean("STicTC", true);
+            int mod = nbt.getCompoundTag("InfiTool").getInteger("Modifiers") + 1;
+            nbt.getCompoundTag("InfiTool").setInteger("Modifiers", mod);
+            input.setTagCompound(nbt);
+        }
         return input;
     }
 
