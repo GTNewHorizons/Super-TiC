@@ -7,11 +7,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
+import com.Zoko061602.SuperTic.Config;
+
 import tconstruct.library.tools.ToolCore;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.crafting.InfusionRecipe;
-
-import com.Zoko061602.SuperTic.Config;
 
 public class InfusionModifierRecipe extends InfusionRecipe {
 

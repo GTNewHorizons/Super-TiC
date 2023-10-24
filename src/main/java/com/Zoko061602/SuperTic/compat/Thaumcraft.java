@@ -4,6 +4,9 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import com.Zoko061602.SuperTic.Config;
+
+import cpw.mods.fml.common.Loader;
 import tconstruct.armor.TinkerArmor;
 import tconstruct.tools.TinkerTools;
 import tconstruct.weaponry.TinkerWeaponry;
@@ -11,9 +14,6 @@ import tconstruct.world.TinkerWorld;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.InfusionRecipe;
-
-import com.Zoko061602.SuperTic.Config;
-import cpw.mods.fml.common.Loader;
 
 class Thaumcraft {
 

@@ -5,7 +5,8 @@ import java.io.IOException;
 
 import net.minecraftforge.common.MinecraftForge;
 
-import com.Zoko061602.SuperTic.compat.Compat;
+import com.Zoko061602.SuperTic.compat.BMCompat;
+import com.Zoko061602.SuperTic.compat.TCCompat;
 import com.google.common.io.Files;
 
 import cpw.mods.fml.common.Loader;
@@ -50,7 +51,7 @@ public class SuperTic {
     public void postInit(FMLPostInitializationEvent e) {
         Config.idConfig(idConfigFile);
         Config.mainConfig(mainConfigFile);
-        if (Loader.isModLoaded("AWWayofTime") && Config.BM) Compat.bloody();
-        if (Loader.isModLoaded("Thaumcraft") && Config.TC) Compat.thaumic();
+        if (Loader.isModLoaded("AWWayofTime") && Config.BM) BMCompat.bloody();
+        if (Loader.isModLoaded("Thaumcraft") && Config.TC) TCCompat.thaumic();
     }
 }

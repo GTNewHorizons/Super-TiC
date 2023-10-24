@@ -7,24 +7,8 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
-import WayofTime.alchemicalWizardry.api.rituals.Rituals;
 
-import com.Zoko061602.SuperTic.Config;
-
-public class Compat {
-
-    public static void bloody() {
-        try {
-            Rituals.registerRitual(
-                    "SuperTiC_Modifier",
-                    1,
-                    Config.BM_LP,
-                    new RitualTinkerer(),
-                    "Spell of the diligent Tinkerer");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+public class TCCompat {
 
     public static void thaumic() {
         Thaumcraft.registerRecipes();
@@ -33,5 +17,4 @@ public class Compat {
                 .setPages(new ResearchPage("STiC"), new ResearchPage(Thaumcraft.infusion)).setAutoUnlock()
                 .registerResearchItem();
     }
-
 }
