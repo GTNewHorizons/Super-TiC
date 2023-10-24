@@ -1,8 +1,8 @@
 package com.Zoko061602.SuperTic.compat;
 
-import WayofTime.alchemicalWizardry.api.rituals.Rituals;
-
 import com.Zoko061602.SuperTic.Config;
+
+import WayofTime.alchemicalWizardry.api.rituals.Rituals;
 
 public class BMCompat {
 

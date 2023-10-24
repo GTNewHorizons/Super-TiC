@@ -12,11 +12,11 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 
-import tconstruct.library.tools.ToolCore;
 import WayofTime.alchemicalWizardry.api.rituals.IMasterRitualStone;
 import WayofTime.alchemicalWizardry.api.rituals.RitualComponent;
 import WayofTime.alchemicalWizardry.api.rituals.RitualEffect;
 import WayofTime.alchemicalWizardry.common.spell.complex.effect.SpellHelper;
+import tconstruct.library.tools.ToolCore;
 
 public class RitualTinkerer extends RitualEffect {
 
