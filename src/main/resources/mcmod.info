@@ -11,9 +11,6 @@
     "authorList": [ "Zokonius" ],
     "credits": "bartimaeusnek, GTNH",
     "logoFile": "",
-    "screenshots": [ "" ],
-    "requiredMods": [ "Forge", "TConstruct" ],
-    "dependencies": [ "TConstruct" , "ExtraTic", "TGregworks", "Thaumcraft", "AWWayofTime"],
-    "useDependencyInformation": true
+    "screenshots": []
   }]
 }
