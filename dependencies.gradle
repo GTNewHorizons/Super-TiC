@@ -2,7 +2,7 @@
 
 dependencies {
     compile 'com.github.GTNewHorizons:NotEnoughItems:2.6.11-GTNH:dev'
-    compile 'com.github.GTNewHorizons:Baubles:1.0.4:dev'
+    compile 'com.github.GTNewHorizons:Baubles-Expanded:2.1.7-GTNH:dev'
 	compile 'com.github.GTNewHorizons:BloodMagic:1.6.2:dev'
 	compile 'com.github.GTNewHorizons:TinkersConstruct:1.12.4-GTNH:dev'
 
