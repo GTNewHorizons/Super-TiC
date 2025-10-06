@@ -1,5 +1,7 @@
 package com.Zoko061602.SuperTic.compat;
 
+import java.util.List;
+
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,6 +13,7 @@ import tconstruct.armor.TinkerArmor;
 import tconstruct.tools.TinkerTools;
 import tconstruct.weaponry.TinkerWeaponry;
 import tconstruct.world.TinkerWorld;
+import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.InfusionRecipe;
@@ -66,8 +69,13 @@ class Thaumcraft {
             appleeasy = applehard;
             applehard = new ItemStack(TinkerArmor.diamondApple);
         }
+        @SuppressWarnings("unchecked")
+        List<Object> recipes = ThaumcraftApi.getCraftingRecipes();
         infusion = new InfusionModifierRecipe(new ItemStack(tools[0]));
-        for (int i = 1; !(i == tools.length); i++) new InfusionModifierRecipe(new ItemStack(tools[i]));
+        recipes.add(infusion);
+        for (int i = 1; !(i == tools.length); i++) {
+            recipes.add(new InfusionModifierRecipe(new ItemStack(tools[i])));
+        }
 
     }
 }
