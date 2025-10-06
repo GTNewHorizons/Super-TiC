@@ -17,7 +17,7 @@ public class InfusionModifierRecipe extends InfusionRecipe {
 
     InfusionModifierRecipe(ItemStack input) {
         super(
-                "TINKERSAUGUMENTATION",
+                "TINKERSAUGMENTATION",
                 getOutput(input),
                 Config.TC_lvl * 2,
                 Thaumcraft.getListfromLevel(Config.TC_lvl),
