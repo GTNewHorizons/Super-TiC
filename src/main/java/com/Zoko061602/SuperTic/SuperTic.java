@@ -6,6 +6,7 @@ import java.io.IOException;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.Zoko061602.SuperTic.compat.BMCompat;
+import com.Zoko061602.SuperTic.compat.TCCompat;
 import com.google.common.io.Files;
 
 import cpw.mods.fml.common.Loader;
@@ -51,8 +52,6 @@ public class SuperTic {
         Config.idConfig(idConfigFile);
         Config.mainConfig(mainConfigFile);
         if (Loader.isModLoaded("AWWayofTime") && Config.BM) BMCompat.bloody();
-        // Thaumic Augmentation is currently not functional due the checks in the Thaumcraft Infusion Matrix craftCycle.
-        // todo: write mixin/ASM to overcome that.
-        // if (Loader.isModLoaded("Thaumcraft") && Config.TC) TCCompat.thaumic();
+        if (Loader.isModLoaded("Thaumcraft") && Config.TC) TCCompat.thaumic();
     }
 }
