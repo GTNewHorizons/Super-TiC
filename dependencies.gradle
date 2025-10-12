@@ -1,9 +1,9 @@
 // Add your dependencies here
 
 dependencies {
-    compile 'com.github.GTNewHorizons:NotEnoughItems:2.8.9-GTNH:dev'
+    compile 'com.github.GTNewHorizons:NotEnoughItems:2.8.11-GTNH:dev'
     compile 'com.github.GTNewHorizons:Baubles-Expanded:2.2.0-GTNH:dev'
-	compile 'com.github.GTNewHorizons:BloodMagic:1.8.0:dev'
+	compile 'com.github.GTNewHorizons:BloodMagic:1.8.3:dev'
 	compile 'com.github.GTNewHorizons:TinkersConstruct:1.14.4-GTNH:dev'
 
     compile 'thaumcraft:Thaumcraft:1.7.10-4.2.3.5:dev'
