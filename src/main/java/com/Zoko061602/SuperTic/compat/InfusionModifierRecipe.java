@@ -26,10 +26,9 @@ public class InfusionModifierRecipe extends InfusionRecipe {
     }
 
     private static Object getOutput(ItemStack input) {
-        if (input == null) return null;
-        if (input.getItem() == null) return null;
+        if (input == null || input.getItem() == null) return null;
         ItemStack out = input.copy();
-        if (out.getItem() instanceof ToolCore) if (out.getTagCompound() != null) {
+        if (out.getItem() instanceof ToolCore && out.getTagCompound() != null) {
             NBTTagCompound nbt = out.getTagCompound();
             nbt.setBoolean("STicTC", true);
             int mod = nbt.getCompoundTag("InfiTool").getInteger("Modifiers") + 1;

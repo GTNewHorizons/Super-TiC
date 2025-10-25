@@ -26,7 +26,7 @@ class Thaumcraft {
             TinkerTools.lumberaxe, TinkerTools.cleaver, TinkerTools.hammer, TinkerTools.battleaxe,
             TinkerTools.excavator, TinkerWeaponry.shuriken, TinkerWeaponry.throwingknife, TinkerWeaponry.javelin,
             TinkerWeaponry.shortbow, TinkerWeaponry.longbow, TinkerWeaponry.crossbow, TinkerWeaponry.arrowAmmo,
-            TinkerWeaponry.boltAmmo, TinkerWeaponry.boneana };
+            TinkerWeaponry.boltAmmo };
 
     private static ItemStack appleeasy = new ItemStack(TinkerArmor.diamondApple);
     private static ItemStack applehard = new ItemStack(Items.golden_apple, 1, 1);
