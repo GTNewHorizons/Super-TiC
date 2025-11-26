@@ -17,7 +17,7 @@ public class InfusionModifierRecipe extends InfusionRecipe {
 
     InfusionModifierRecipe(ItemStack input) {
         super(
-                "TINKERSAUGUMENTATION",
+                "TINKERSAUGMENTATION",
                 getOutput(input),
                 Config.TC_lvl * 2,
                 Thaumcraft.getListfromLevel(Config.TC_lvl),
@@ -26,16 +26,16 @@ public class InfusionModifierRecipe extends InfusionRecipe {
     }
 
     private static Object getOutput(ItemStack input) {
-        if (input == null) return null;
-        if (input.getItem() == null) return null;
-        if (input.getItem() instanceof ToolCore) if (input.getTagCompound() != null) {
-            NBTTagCompound nbt = input.getTagCompound();
+        if (input == null || input.getItem() == null) return null;
+        ItemStack out = input.copy();
+        if (out.getItem() instanceof ToolCore && out.getTagCompound() != null) {
+            NBTTagCompound nbt = out.getTagCompound();
             nbt.setBoolean("STicTC", true);
             int mod = nbt.getCompoundTag("InfiTool").getInteger("Modifiers") + 1;
             nbt.getCompoundTag("InfiTool").setInteger("Modifiers", mod);
-            input.setTagCompound(nbt);
+            out.setTagCompound(nbt);
         }
-        return input;
+        return out;
     }
 
     @Override
@@ -67,15 +67,7 @@ public class InfusionModifierRecipe extends InfusionRecipe {
 
     @Override
     public Object getRecipeOutput(ItemStack input) {
-        if (input == null || input.getItem() == null) return null;
-        if (input.getItem() instanceof ToolCore) if (input.getTagCompound() != null) {
-            NBTTagCompound nbt = input.getTagCompound();
-            nbt.setBoolean("STicTC", true);
-            int mod = nbt.getCompoundTag("InfiTool").getInteger("Modifiers") + 1;
-            nbt.getCompoundTag("InfiTool").setInteger("Modifiers", mod);
-            input.setTagCompound(nbt);
-        }
-        return input;
+        return getOutput(input);
     }
 
     public ItemStack[] getComponents() {
