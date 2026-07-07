@@ -32,11 +32,11 @@ class PotionEventHandler {
             }
 
             if (target instanceof EntityPlayer) {
-                EntityPlayerMP playerMP = (EntityPlayerMP) event.entityPlayer;
+                EntityPlayerMP playerMP = (EntityPlayerMP) player;
                 if (playerMP.canAttackPlayer((EntityPlayer) target)) return;
             }
 
-            if ((toolStack.getItem() instanceof ToolCore)) {
+            if (toolStack.getItem() instanceof ToolCore) {
                 ToolCore tool = (ToolCore) toolStack.getItem();
 
                 if (tool == null) {
