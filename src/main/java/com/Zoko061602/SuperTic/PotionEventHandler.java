@@ -91,7 +91,10 @@ class PotionEventHandler {
     private void addEffect(EntityLivingBase e, int id) {
         int r = new Random().nextInt(Config.id_prob.get(id));
         if (r == 0) e.addPotionEffect(
-                new PotionEffect(Config.id_eff.get(id) * (-1), Config.id_dur.get(id), Config.id_amp.get(id)));
+                new PotionEffect(
+                        Config.id_eff.get(id) > 0 ? Config.id_eff.get(id) : Config.id_eff.get(id) * (-1),
+                        Config.id_dur.get(id),
+                        Config.id_amp.get(id)));
     }
 
 }
