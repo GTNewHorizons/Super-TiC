@@ -21,7 +21,7 @@ class PotionEventHandler {
     }
 
     void applyEffects(AttackEntityEvent event) {
-        if (((event.target instanceof EntityLivingBase)) && ((event.entityPlayer instanceof EntityPlayer))) {
+        if (event.target instanceof EntityLivingBase) {
             EntityLivingBase target = (EntityLivingBase) event.target;
             EntityPlayer player = event.entityPlayer;
 
