@@ -14,16 +14,16 @@ import tconstruct.library.tools.ToolCore;
 
 class PotionEventHandler {
 
-    private static PotionEventHandler INSTANCE = new PotionEventHandler();
+    private static final PotionEventHandler INSTANCE = new PotionEventHandler();
 
     static PotionEventHandler getInstance() {
         return INSTANCE;
     }
 
     void applyEffects(AttackEntityEvent event) {
-        if (((event.target instanceof EntityLivingBase)) && ((event.entityPlayer instanceof EntityPlayerMP))) {
+        if (((event.target instanceof EntityLivingBase)) && ((event.entityPlayer instanceof EntityPlayer))) {
             EntityLivingBase target = (EntityLivingBase) event.target;
-            EntityPlayerMP player = (EntityPlayerMP) event.entityPlayer;
+            EntityPlayer player = event.entityPlayer;
 
             ItemStack toolStack = player.getCurrentEquippedItem();
 
@@ -31,8 +31,9 @@ class PotionEventHandler {
                 return;
             }
 
-            if (((target instanceof EntityPlayer)) && (!player.canAttackPlayer((EntityPlayer) target))) {
-                return;
+            if (target instanceof EntityPlayer) {
+                EntityPlayerMP playerMP = (EntityPlayerMP)event.entityPlayer;
+                if (playerMP.canAttackPlayer((EntityPlayer) target)) return;
             }
 
             if ((toolStack.getItem() instanceof ToolCore)) {
