@@ -25,46 +25,20 @@ class TooltipEventHandler {
     }
 
     private static String getLatin(int a) {
-        String r;
-        switch (a) {
-            case 0:
-                r = "";
-                break;
-            case 1:
-                r = " I";
-                break;
-            case 2:
-                r = " II";
-                break;
-            case 3:
-                r = " III";
-                break;
-            case 4:
-                r = " IV";
-                break;
-            case 5:
-                r = " V";
-                break;
-            case 6:
-                r = " VI";
-                break;
-            case 7:
-                r = " VII";
-                break;
-            case 8:
-                r = " VIII";
-                break;
-            case 9:
-                r = " IX";
-                break;
-            case 10:
-                r = " X";
-                break;
-            default:
-                r = " X+";
-                break;
-        }
-        return r;
+        return switch (a) {
+            case 0 -> "";
+            case 1 -> " I";
+            case 2 -> " II";
+            case 3 -> " III";
+            case 4 -> " IV";
+            case 5 -> " V";
+            case 6 -> " VI";
+            case 7 -> " VII";
+            case 8 -> " VIII";
+            case 9 -> " IX";
+            case 10 -> " X";
+            default -> " X+";
+        };
     }
 
     void addTooltips(ItemTooltipEvent e) {
@@ -74,8 +48,7 @@ class TooltipEventHandler {
     }
 
     private void addPartTooltips(ItemTooltipEvent e) {
-        if (e.itemStack.getItem() instanceof IToolPart) {
-            IToolPart item = (IToolPart) e.itemStack.getItem();
+        if (e.itemStack.getItem() instanceof IToolPart item) {
             int id = Config.id_eff.get(item.getMaterialID(e.itemStack));
             e.toolTip.add(
                     (id < 0 ? EnumChatFormatting.AQUA : EnumChatFormatting.DARK_AQUA)
@@ -85,8 +58,7 @@ class TooltipEventHandler {
     }
 
     private void addPotionTooltips(ItemTooltipEvent e) {
-        if (e.itemStack.getItem() instanceof ToolCore) {
-            ToolCore core = (ToolCore) e.itemStack.getItem();
+        if (e.itemStack.getItem() instanceof ToolCore core) {
             if (e.itemStack.hasTagCompound()) {
                 NBTTagCompound tags = e.itemStack.getTagCompound();
 
@@ -204,10 +176,6 @@ class TooltipEventHandler {
                 if (mat != null) {
                     if (mat.stonebound > 0) e.toolTip.add("Stonebound: x" + mat.stonebound);
                     if (mat.stonebound < 0) e.toolTip.add("Jagged: x" + mat.stonebound * -1);
-
-                    // This is already added by TGregworks...
-                    // if (mat.reinforced != 0)
-                    // e.toolTip.add("Reinforced" + getLatin(mat.reinforced));
                 }
             }
         }

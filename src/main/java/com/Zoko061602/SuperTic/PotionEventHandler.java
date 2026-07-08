@@ -21,8 +21,7 @@ class PotionEventHandler {
     }
 
     void applyEffects(AttackEntityEvent event) {
-        if (event.target instanceof EntityLivingBase) {
-            EntityLivingBase target = (EntityLivingBase) event.target;
+        if (event.target instanceof EntityLivingBase target) {
             EntityPlayer player = event.entityPlayer;
 
             ItemStack toolStack = player.getCurrentEquippedItem();
@@ -31,17 +30,11 @@ class PotionEventHandler {
                 return;
             }
 
-            if (target instanceof EntityPlayer && player instanceof EntityPlayerMP) {
-                EntityPlayerMP playerMP = (EntityPlayerMP) player;
+            if (target instanceof EntityPlayer && player instanceof EntityPlayerMP playerMP) {
                 if (playerMP.canAttackPlayer((EntityPlayer) target)) return;
             }
 
-            if (toolStack.getItem() instanceof ToolCore) {
-                ToolCore tool = (ToolCore) toolStack.getItem();
-
-                if (tool == null) {
-                    return;
-                }
+            if (toolStack.getItem() instanceof ToolCore tool) {
 
                 NBTTagCompound tags = toolStack.getTagCompound();
 
