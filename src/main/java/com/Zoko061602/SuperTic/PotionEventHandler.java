@@ -21,17 +21,15 @@ class PotionEventHandler {
     }
 
     void applyEffects(AttackEntityEvent event) {
-        if (event.target instanceof EntityLivingBase target) {
-            EntityPlayer player = event.entityPlayer;
-
+        if (event.target instanceof EntityLivingBase target && event.entityPlayer instanceof EntityPlayerMP player) {
             ItemStack toolStack = player.getCurrentEquippedItem();
 
             if (toolStack == null) {
                 return;
             }
 
-            if (target instanceof EntityPlayer && player instanceof EntityPlayerMP playerMP) {
-                if (playerMP.canAttackPlayer((EntityPlayer) target)) return;
+            if (target instanceof EntityPlayer) {
+                if (player.canAttackPlayer((EntityPlayer) target)) return;
             }
 
             if (toolStack.getItem() instanceof ToolCore tool) {
