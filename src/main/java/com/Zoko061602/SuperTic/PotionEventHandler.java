@@ -31,7 +31,7 @@ class PotionEventHandler {
                 return;
             }
 
-            if (target instanceof EntityPlayer) {
+            if (target instanceof EntityPlayer && player instanceof EntityPlayerMP) {
                 EntityPlayerMP playerMP = (EntityPlayerMP) player;
                 if (playerMP.canAttackPlayer((EntityPlayer) target)) return;
             }
