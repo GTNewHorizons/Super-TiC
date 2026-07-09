@@ -28,8 +28,8 @@ class PotionEventHandler {
                 return;
             }
 
-            if (target instanceof EntityPlayer) {
-                if (player.canAttackPlayer((EntityPlayer) target)) return;
+            if (target instanceof EntityPlayer tar) {
+                if (player.canAttackPlayer(tar)) return;
             }
 
             if (toolStack.getItem() instanceof ToolCore tool) {

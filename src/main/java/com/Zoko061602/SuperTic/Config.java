@@ -50,7 +50,7 @@ public class Config {
                             1,
                             1,
                             Integer.MAX_VALUE,
-                            "") - 1);
+                            ""));
             id_prob.put(
                     i,
                     idconf.getInt(

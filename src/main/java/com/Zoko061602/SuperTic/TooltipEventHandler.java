@@ -26,8 +26,7 @@ class TooltipEventHandler {
 
     private static String getLatin(int a) {
         return switch (a) {
-            case 0 -> "";
-            case 1 -> " I";
+            case 0, 1 -> " I";
             case 2 -> " II";
             case 3 -> " III";
             case 4 -> " IV";
@@ -49,11 +48,11 @@ class TooltipEventHandler {
 
     private void addPartTooltips(ItemTooltipEvent e) {
         if (e.itemStack.getItem() instanceof IToolPart item) {
-            int id = Config.id_eff.get(item.getMaterialID(e.itemStack));
+            int effID = Config.id_eff.get(item.getMaterialID(e.itemStack));
             e.toolTip.add(
-                    (id < 0 ? EnumChatFormatting.AQUA : EnumChatFormatting.DARK_AQUA)
-                            + StatCollector.translateToLocal(new PotionEffect(id, 1).getEffectName())
-                            + getLatin(Config.id_amp.get(id)));
+                    (effID < 0 ? EnumChatFormatting.AQUA : EnumChatFormatting.DARK_AQUA)
+                            + StatCollector.translateToLocal(new PotionEffect(Math.abs(effID), 1).getEffectName())
+                            + getLatin(Config.id_amp.get(item.getMaterialID(e.itemStack))));
         }
     }
 
