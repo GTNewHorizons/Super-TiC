@@ -14,33 +14,25 @@ import tconstruct.library.tools.ToolCore;
 
 class PotionEventHandler {
 
-    private static PotionEventHandler INSTANCE = new PotionEventHandler();
+    private static final PotionEventHandler INSTANCE = new PotionEventHandler();
 
     static PotionEventHandler getInstance() {
         return INSTANCE;
     }
 
     void applyEffects(AttackEntityEvent event) {
-        if (((event.target instanceof EntityLivingBase)) && ((event.entityPlayer instanceof EntityPlayerMP))) {
-            EntityLivingBase target = (EntityLivingBase) event.target;
-            EntityPlayerMP player = (EntityPlayerMP) event.entityPlayer;
-
+        if (event.target instanceof EntityLivingBase target && event.entityPlayer instanceof EntityPlayerMP player) {
             ItemStack toolStack = player.getCurrentEquippedItem();
 
             if (toolStack == null) {
                 return;
             }
 
-            if (((target instanceof EntityPlayer)) && (!player.canAttackPlayer((EntityPlayer) target))) {
-                return;
+            if (target instanceof EntityPlayer tar) {
+                if (player.canAttackPlayer(tar)) return;
             }
 
-            if ((toolStack.getItem() instanceof ToolCore)) {
-                ToolCore tool = (ToolCore) toolStack.getItem();
-
-                if (tool == null) {
-                    return;
-                }
+            if (toolStack.getItem() instanceof ToolCore tool) {
 
                 NBTTagCompound tags = toolStack.getTagCompound();
 
@@ -90,7 +82,7 @@ class PotionEventHandler {
     private void addEffect(EntityLivingBase e, int id) {
         int r = new Random().nextInt(Config.id_prob.get(id));
         if (r == 0) e.addPotionEffect(
-                new PotionEffect(Config.id_eff.get(id) * (-1), Config.id_dur.get(id), Config.id_amp.get(id)));
+                new PotionEffect(Math.abs(Config.id_eff.get(id)), Config.id_dur.get(id), Config.id_amp.get(id)));
     }
 
 }
