@@ -49,6 +49,7 @@ class TooltipEventHandler {
     private void addPartTooltips(ItemTooltipEvent e) {
         if (e.itemStack.getItem() instanceof IToolPart item) {
             int effID = Config.id_eff.get(item.getMaterialID(e.itemStack));
+            if (effID == 0) return;
             e.toolTip.add(
                     (effID < 0 ? EnumChatFormatting.AQUA : EnumChatFormatting.DARK_AQUA)
                             + StatCollector.translateToLocal(new PotionEffect(Math.abs(effID), 1).getEffectName())
